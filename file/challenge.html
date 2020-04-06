@@ -368,49 +368,62 @@
 <ul>
 <li><a href="#goal">Goal & Metrics</a></li>
 <li><a href="#simulator">Simulator</a></li>
+<li><a href="#start">Getting Started</a></li>
 </ul>
     
      <!-- Header -->
     <section class="content-section " id="goal" style="padding-top: 20px;"> 
         <h2>Goal & Metrics</h2>
-        <p>Our goal is to minimize the #infected and at the same time, quarantine people as few as possible. Therefore, we have defined the following metrics:</p>
-        <p>1. 
-            $ \begin{array}{rcll}
+        <p>Our goal is to minimize the number of the infected people and at the same time, quarantine people as few as possible. Therefore, we have defined the following metrics:</p>
+        <p>$ \begin{array}{rcll}
               & \#_{infected} + \lambda \times \#_{quarantined}
-            \end{array} $: The weighted sum of the number of infected people and the number of quarantined people.
+            \end{array} $: The weighted sum of the number of infected people and the number of quarantined people, $\lambda$ is a predefined factor.
         </p>
-        <p>2. 
-            $ \begin{array}{rcll}
-              & \#_{quarantined}\ s.t. \ \#_{infected} \leq 100
-            \end{array} $: The number of people needs to be quarantined in order to keep #infected under 100.
-        </p>
+
     </section>
 
 
     <section class="content-section " id="simulator" style="padding-top: 20px;"> 
         <h2>Simulator</h2>
-        <br>
+        <p>The simulator simulates individual mobility in a city of $R$ Regions with $M$ people. Each region consists of several POIs, where each POI can serve three functions: working, living and commercial purposes. Each person is associated with one living POI and one working POI (randomly sampled from $K_work$ nearest POIs of the living POI).</p>
         
-        <h4>Simulation Process</h4>
-        <p>The simulator covers a city of 100 regions, with 5000 people. Each region can serve three functions: working, living and commercial purposes. Each person is associated with one working region and one living region. </p>
-        <p>On working days, people will go to work at a certain time (e.g., 8 am), and stay there for several hours (randomly integer between 7 and 10). After work, they may go shopping in the nearby region with a probability P_{sw}. Then, they will return home.</p>
-        <p>On weekends, people may go shopping with a probability P_{se}, and randomly choose a commercial region from the whole city. After that, they will return home.</p>
-        <p>Each person can have several stages (we do not consider the treatment process now):</p>
-        $$1. Healthy \rightarrow 2.Infected\ (undiscovered) \rightarrow 3.Infected\ (discovered) \rightarrow 4.Infected\ (critical)$$
+        <h4>Mobility of a person</h4>
+        <p>A person has different modes of mobility during workdays and weekends:</p>
         
-        <ul>
-            <li>From stage 1 to stage 2, people can get infected via contact with infected people. There are two different types of contact.</li>
-            <ol>
-                <li>Simple contact: All people working in the same region or living in the same region are regarded as simple contacts. People will also be regarded as simple contacts if they appear in the same commercial region at the same time.</li>
-                <li>Close contact: Each person has a close contact group in his/her living region (size of which described by a distribution $D_l$) and another close contact group in his/her working region (size of which described by a distribution $D_w$).</li>
-            </ol>
-            <li>From stage 2 to stage 3, there is a fixed incubation period of two days. The temporal length $\#_{days}$ from stage 3 to stage 4 is drawn from a distribution $D_c$.</li>
+        <p>On working days, a person will go to work at a certain time $T_{start} \sim Uniform(t_{s1}, t_{s2})$, and stay there for $T_{work} \sim Uniform(t_{w1}, t_{w2})$ hours. After work, they may visit a nearby commercial POI with a probability of P_{com} and stay there for $T_{mall} \sim Uniform (t_{c1}, t_{c2})$ hours. Then, they will return home.</p>
+        
+        <p>On weekends, people may visit a commercial POI within the whole city with a probability $P’_{com}$ and stay there for $T'_mall \sim Uniform (t’_{c1}, t’_{c2})$ hours. After that, they will return home.</p>
+        
+        <h4>Health status (HS) of a person</h4>
+        Each person can have several health stages (we do not consider the treatment process now).
+        $$1.Healthy \rightarrow  2. Infected\ (undiscovered) \rightarrow  3. Infected\ (discovered) \rightarrow  4. Infected (critical) \rightarrow   5. Immune $$
+        
+        <p>From HS 1 to HS 2, people can get infected via contact with infected people, with different probabilities from two different types of contacts.
+            <ul>
+                <li>$Inf_{simple}$ from simple contact: All people working in the same region or living in the same region are regarded as simple contacts. People will also be regarded as simple contacts if they appear in the same commercial POI at the same time.</li>
+                <li>$Inf_{close}$ from close contact: A group of people with size $K_L \sim Uniform(I_{c1}, I_{c2})$ in a person’s living region is considered as his/her closed contacts.  And a group of people with size $K_W \sim Uniform(I_{c1}, I_{c2})$ in a person’s working region is also considered as his/her closed contacts.
+                </li>
         </ul>
-        <br>
+        <p>From HS 2 to HS 3, there is a fixed incubation period of $INC$ days.</p>
+        <p>From HS 3 to HS 4, there is a development time period $DEV \sim Normal(d_1, d_2)$.</p>
+        <p> From HS 4 to HS 5, there is a fixed treatment time period of $IMM$ days.</p>
         
-        <h4>Control</h4>
-        <p>We will provide policies to put people in hospital, quarantine people, or force people to stay at home.</p>
-        <p>There are in total six groups of people with different levels of risks:</p>
+        
+        <h4>Controlling action of a person</h4>
+        <p>We can provide different actions to each individual:</p>
+        <ul>
+            <li>Free: The person can move normally.</li>
+            <li>In quarantine: The person is quarantined, with access from his/her close contacts at the living POI.</li>
+            <li>In isolation: The person is isolated, without access from anyone.</li>
+            <li>In hospital: The person is under treatment in the hospital. A person can only be in the hospital after Health Stage 2.</li>
+        </ul>
+
+    </section>
+    
+    <section class="content-section " id="start" style="padding-top: 20px;"> 
+        <h2>Getting Started</h2>
+        <p>Here, we provide an example control strategy, with different actions on different groups of people.</p>
+        <p>We can define the following six groups of people based on their levels of health risks:</p>
         <ul>
             <li>G1: Infected (critical)</li>
             <li>G2: Infected (discovered)</li>
@@ -419,15 +432,16 @@
             <li>G5: Close contact of G2</li>
             <li>G6: Simple contact of G2</li>
         </ul>
-        <p>We can take the following three kinds of actions to them:</p>
+        <p>We can choose to take the following three actions to them:</p>
         <ul>
-            <li>A1: Treat (put in hospital)</li>
-            <li>A2: Quarantine</li>
-            <li>A3: Force to stay at home</li>
+            <li>A0: Free</li>
+            <li>A1: In quarantine</li>
+            <li>A2: In isolation</li>
+            <li>A3: In hospital</li>
         </ul>
         
         <h5>Simple Control</h5>
-        <p>Based on above definitions, we have provided 8 different coarse strategies (we will add more later):</p>
+        <p>Based on these definitions, we have provided 8 strategies to control the actions of certain groups of people:</p>
         <ul>
             <li>S1: G1 A1</li>
             <li>S2: G3 A2</li>
@@ -442,7 +456,7 @@
         <p>We use an 8-bit binary string to represent the policy. Each bit represents whether the corresponding strategy is selected. For instance, “11000000” represents that S1 and S2 are selected. Note that, when multiple strategies are applied to the same group of people, the more strict one will take effect. For instance, if S2 and S5 are selected, only S2 will take effect. </p>
         
         
-        <h5>Get started</h5>
+        <h5>Get started with your own specification</h5>
         You can conduct the experiment by running the following commands, with options listed here to select different strategies and parameters.
         <pre>
 Usage:
@@ -458,7 +472,7 @@ Usage:
 
     
     </section>
-  
+ 
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
