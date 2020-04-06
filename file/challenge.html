@@ -385,12 +385,12 @@
 
     <section class="content-section " id="simulator" style="padding-top: 20px;"> 
         <h2>Simulator</h2>
-        <p>The simulator simulates individual mobility in a city of $R$ Regions with $M$ people. Each region consists of several POIs, where each POI can serve three functions: working, living and commercial purposes. Each person is associated with one living POI and one working POI (randomly sampled from $K_work$ nearest POIs of the living POI).</p>
+        <p>The simulator simulates individual mobility in a city of $R$ Regions with $M$ people. Each region consists of several POIs, where each POI can serve three functions: working, living and commercial purposes. Each person is associated with one living POI and one working POI (randomly sampled from $K_{work}$ nearest POIs of the living POI).</p>
         
         <h4>Mobility of a person</h4>
         <p>A person has different modes of mobility during workdays and weekends:</p>
         
-        <p>On working days, a person will go to work at a certain time $T_{start} \sim Uniform(t_{s1}, t_{s2})$, and stay there for $T_{work} \sim Uniform(t_{w1}, t_{w2})$ hours. After work, they may visit a nearby commercial POI with a probability of P_{com} and stay there for $T_{mall} \sim Uniform (t_{c1}, t_{c2})$ hours. Then, they will return home.</p>
+        <p>On working days, a person will go to work at a certain time $T_{start} \sim Uniform(t_{s1}, t_{s2})$, and stay there for $T_{work} \sim Uniform(t_{w1}, t_{w2})$ hours. After work, they may visit a nearby commercial POI (randomly sampled from $K_{com}$ nearest POIs of the commercial POI) with a probability of P_{com} and stay there for $T_{mall} \sim Uniform (t_{c1}, t_{c2})$ hours. Then, they will return home.</p>
         
         <p>On weekends, people may visit a commercial POI within the whole city with a probability $P’_{com}$ and stay there for $T'_mall \sim Uniform (t’_{c1}, t’_{c2})$ hours. After that, they will return home.</p>
         
@@ -421,7 +421,7 @@
     </section>
     
     <section class="content-section " id="start" style="padding-top: 20px;"> 
-        <h2>Getting Started</h2>
+        <h2>Getting Started</h>
         <p>Here, we provide an example control strategy, with different actions on different groups of people.</p>
         <p>We can define the following six groups of people based on their levels of health risks:</p>
         <ul>
