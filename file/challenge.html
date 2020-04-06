@@ -10,22 +10,13 @@
 
   <title>Coronavirus Challenge</title>
 
-  <!-- Bootstrap Core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/stylish-portfolio.min.css" rel="stylesheet">
     
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
 <script type="text/javascript"
-  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 </head>
@@ -348,25 +339,6 @@
   }
 </style>
 
-<body id="page-top", style="width: 1000px;">
-<section class="content-section " id="methods" style="padding-top: 20px;">
-    <div class="container">
-        <div class="content-section-heading text-center ">
-            <h2 class="mb-5">Coronavirus Challenge</h2>
-             <!-- <h5 class="mb-5"></h5> -->
-        </div>
-    </div>
-
-
-<p>In response to the current world-wide concern of coronavirus, we would like to host a challenge on prescriptive analytics for coronavirus. The challenge will be evaluated on a human mobility and epidemic transmission simulator, which are based on real data. Participants will design different strategies to minimize the spread of the virus. The winners will be invited to present at the workshop.</p>
-
-<h2 id="toc_1">Table of contents</h2>
-
-<ul>
-<li><a href="#goal">Goal & Metrics</a></li>
-<li><a href="#simulator">Simulator</a></li>
-</ul>
-
     <script language="JavaScript">
         var allTypes = new Array('machine-learning', 'data-mining')
         function showContentWithType(typeName) {
@@ -377,6 +349,26 @@
             $(".publication").show("slow");
         }
     </script>
+
+<body id="page-top", style="width: 1000px;">
+<section class="content-section " id="methods" style="padding-top: 20px;">
+    <div class="container">
+        <div class="content-section-heading text-center ">
+            <h2 class="mb-5">Coronavirus Challenge</h2>
+             <!-- <h5 class="mb-5"></h5> -->
+        </div>
+    </div>
+
+
+    <p>In response to the current world-wide concern of coronavirus, we would like to host a challenge on prescriptive analytics for coronavirus. The challenge will be evaluated on a human mobility and epidemic transmission simulator, which are based on real data. Participants will design different strategies to minimize the spread of the virus. The winners will be invited to present at the workshop.</p>
+</section>
+
+<h2 id="toc_1">Table of contents</h2>
+
+<ul>
+<li><a href="#goal">Goal & Metrics</a></li>
+<li><a href="#simulator">Simulator</a></li>
+</ul>
     
      <!-- Header -->
     <section class="content-section " id="goal" style="padding-top: 20px;"> 
@@ -394,17 +386,17 @@
         </p>
     </section>
 
-    <!-- Header -->
+
     <section class="content-section " id="simulator" style="padding-top: 20px;"> 
         <h2>Simulator</h2>
         <br>
         
-        <h3>Simulation Process</h3>
+        <h4>Simulation Process</h4>
         <p>The simulator covers a city of 100 regions, with 5000 people. Each region can serve three functions: working, living and commercial purposes. Each person is associated with one working region and one living region. </p>
         <p>On working days, people will go to work at a certain time (e.g., 8 am), and stay there for several hours (randomly integer between 7 and 10). After work, they may go shopping in the nearby region with a probability P_{sw}. Then, they will return home.</p>
         <p>On weekends, people may go shopping with a probability P_{se}, and randomly choose a commercial region from the whole city. After that, they will return home.</p>
         <p>Each person can have several stages (we do not consider the treatment process now):</p>
-        $$Healthy \rightarrow Infected\ (undiscovered) \rightarrow Infected\ (discovered) \rightarrow Infected\ (critical)$$
+        $$1. Healthy \rightarrow 2.Infected\ (undiscovered) \rightarrow 3.Infected\ (discovered) \rightarrow 4.Infected\ (critical)$$
         
         <ul>
             <li>From stage 1 to stage 2, people can get infected via contact with infected people. There are two different types of contact.</li>
@@ -412,7 +404,7 @@
                 <li>Simple contact: All people working in the same region or living in the same region are regarded as simple contacts. People will also be regarded as simple contacts if they appear in the same commercial region at the same time.</li>
                 <li>Close contact: Each person has a close contact group in his/her living region (size of which described by a distribution $D_l$) and another close contact group in his/her working region (size of which described by a distribution $D_w$).</li>
             </ol>
-            <li>From stage 2 to stage 3, there is a fixed incubation period of two days. The temporal length $#_{days}$ from stage 3 to stage 4 is drawn from a distribution $D_c$.</li>
+            <li>From stage 2 to stage 3, there is a fixed incubation period of two days. The temporal length $\#_{days}$ from stage 3 to stage 4 is drawn from a distribution $D_c$.</li>
         </ul>
         <br>
         
@@ -468,217 +460,9 @@ Usage:
     </section>
   
 
-
-<!--
-<section class="content-section " id="methods" style="padding-top: 20px;">
-    <div class="container">
-        <div class="content-section-heading text-center ">
-            <h2 class="mb-5">Team</h2>
-        </div>
-    </div>
-
-    <div class="container">
-
-      <div class="row">
-        <div class="col-xl-12 col-md-6 mb-5">
-          <div class="card border-0">
-            <div class="card-body text-center">
-              <h3 class="card-title mb-0">Faculty Members</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xl-4 col-md-6 mb-5">
-          <div class="card border-0">
-            <div class="card-body text-center">
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-md-6 mb-5">
-          <div class="card border-0">
-              <a href="https://faculty.ist.psu.edu/jessieli/Site/index.html">
-            <img src="img/jessie-li.png" class="card-img-top" alt="...">
-            <div class="card-body text-center">
-                <h5 class="card-title mb-0">Zhenhui (Jessie) Li</h5>
-              <div class="card-text text-black-50">Penn State</div>
-            </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-4 col-md-6 mb-5">
-          <div class="card border-0">
-            <div class="card-body text-center">
-            </div>
-          </div>
-        </div>
-
-      <div class="row">
-        <div class="col-xl-12 col-md-6 mb-5">
-          <div class="card border-0">
-            <div class="card-body text-center">
-              <h3 class="card-title mb-0">Student Members</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xl-3 col-md-6 mb-4">
-              <a href="http://personal.psu.edu/hzw77/">
-                  <div class="card border-0 shadow">
-
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-0">Hua Wei</h5>
-                      <div class="card-text text-black-50">PhD, Penn State</div>
-                    </div>
-                  </div>
-            </a>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="http://personal.psu.edu/~gjz5038/">
-              <div class="card border-0 shadow">
-                <div class="card-body text-center">
-                  <h5 class="card-title mb-0">Guanjie Zheng</h5>
-                  <div class="card-text text-black-50">PhD, Penn State</div>
-                </div>
-              </div>
-            </a>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="https://chacha-chen.github.io/">
-              <div class="card border-0 shadow">
-                <div class="card-body text-center">
-                  <h5 class="card-title mb-0">Chacha Chen</h5>
-                  <div class="card-text text-black-50">PhD, Penn State</div>
-                </div>
-              </div>
-            </a>
-        </div>  
-
-
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="http://zang-xs.com">
-              <div class="card border-0 shadow">
-                <div class="card-body text-center">
-                  <h5 class="card-title mb-0">Xinshi Zang</h5>
-                  <div class="card-text text-black-50">Bachelor, Shanghai Jiao Tong University</div>
-                </div>
-              </div>
-          </a>
-        </div>
-
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="https://xyh97.github.io/">
-              <div class="card border-0 shadow">
-                <div class="card-body text-center">
-                  <h5 class="card-title mb-0">Yuanhao Xiong</h5>
-                  <div class="card-text text-black-50">PhD, University of California, Los Angelos</div>
-                </div>
-              </div>
-            </a>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="https://sites.google.com/site/xunannancy/">
-              <div class="card border-0 shadow">
-                <div class="card-body text-center">
-                  <h5 class="card-title mb-0">Nan Xu</h5>
-                  <div class="card-text text-black-50">PhD, University of Southern California</div>
-                </div>
-              </div>
-            </a>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="http://apex.sjtu.edu.cn/members/zhc@apexlab.org">
-              <div class="card border-0 shadow">
-                <div class="card-body text-center">
-                  <h5 class="card-title mb-0">Huichu Zhang</h5>
-                  <div class="card-text text-black-50">PhD, Shanghai Jiao Tong University</div>
-                </div>
-              </div>
-            </a>
-        </div>
-
-      </div>
-
-
-    </div>
-    </div>
-</section>
--->
-
-    
-  <!-- Call to Action -->
-<!--
-  <section class="content-section ">
-    
-  </section>
--->
-
-  <!-- Map -->
-<!--
-  <section id="contact" class="map">
-    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-    <br />
-    <small>
-      <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-    </small>
-  </section>
--->
-
-  <!-- Footer -->
-  <footer id="contact" class="footer text-center" style="
-    padding-top: 0px;
-    padding-bottom: 0px;
-">
-      <div class="col-lg-6 mt-5 mx-auto">
-                <h3>Contact us</h3>
-            </div>
-    <div class="container">
-        <p></p>
-        
-      <ul class="list-inline mb-5">
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="mailto:intelligent.traffic.signal@gmail.com">
-            <i class="icon-envelope"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white mr-3" href="#">
-            <i class="icon-social-google"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a class="social-link rounded-circle text-white" href="https://github.com/traffic-signal-control">
-            <i class="icon-social-github"></i>
-          </a>
-        </li>
-      </ul>
-      <!-- <p class="text-muted small mb-0">Copyright &copy; Traffic Signal Control Group | Wesbite developed by <a href="http://personal.psu.edu/hzw77/">Hua Wei</a> | Template by <a href="http://startbootstrap.com/">Smart Bootstrap</a></p> -->
-    </div>
-  </footer>
-
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/stylish-portfolio.min.js"></script>
+      <i class="fas fa-angle-up"></i> </a>
 
 </body>
 
