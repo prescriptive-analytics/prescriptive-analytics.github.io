@@ -729,6 +729,10 @@ button:focus,
     line-height : 1.25;
     }
 
+.section-ajenda .tab {
+    padding-left: 10px;
+}
+
 
 /* --------------------------
  * Client Logo 
