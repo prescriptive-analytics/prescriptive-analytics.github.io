@@ -734,6 +734,29 @@ button:focus,
 }
 
 
+
+/* --------------------------
+ * talks
+ *---------------------------*/
+.section-invited {
+    padding : 100px 0;
+}
+
+
+.section-invited .video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.section-invited .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 /* --------------------------
  * Client Logo 
  *---------------------------*/
@@ -868,3 +891,9 @@ button:focus,
     text-align : center;
     top        : 65%;
     }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
